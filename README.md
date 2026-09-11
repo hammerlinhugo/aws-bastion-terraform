@@ -69,6 +69,10 @@ VPC : 10.0.0.0/16
 Région : eu-west-2 (sélectionné à la main afin d'éviter les quotas)
 AZ : eu-west-2a
 
+Les captures et preuves de validation du déploiement sont disponibles dans :
+
+[Voir les preuves du module VPC](./docs/vpc/preuves.md)
+
 # Module Security
 
 ## Objectif
@@ -112,6 +116,10 @@ IP publique /32
 | tp-10-sg-prive      |
 +---------------------+
 ```
+
+Les captures et preuves de validation du déploiement sont disponibles dans :
+
+[Voir les preuves du module VPC](./docs/security/preuves.md)
 
 # Module EC2
 
@@ -159,4 +167,8 @@ Poste administrateur
         |
         v
      Internet
+
+Les captures et preuves de validation du déploiement sont disponibles dans :
+
+[Voir les preuves du module VPC](./docs/ec2/preuves.md)
 ```
