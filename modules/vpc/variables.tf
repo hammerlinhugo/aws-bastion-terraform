@@ -1,8 +1,3 @@
-variable "aws_region" {
-  description = "Région AWS utilisée"
-  type        = string
-}
-
 variable "prefix" {
   description = "Prefixe utilise pour nommer les ressources (=10)"
   type        = string
