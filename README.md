@@ -167,7 +167,7 @@ Poste administrateur
         |
         v
      Internet
-
+```
 Les captures et preuves de validation du déploiement sont disponibles dans :
 
 [Voir les preuves du module EC2](./docs/ec2/preuves.md)
