@@ -64,7 +64,7 @@ passe par la NAT Gateway placée dans le sous-réseau public.
                   |    10.0.11.0/24   |
                   |                   |
                   +-------------------+
-
+```
 VPC : 10.0.0.0/16
 Région : eu-west-2 (sélectionné à la main afin d'éviter les quotas)
 AZ : eu-west-2a
@@ -111,3 +111,4 @@ IP publique /32
 +---------------------+
 | tp-10-sg-prive      |
 +---------------------+
+```
