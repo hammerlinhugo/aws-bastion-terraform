@@ -112,3 +112,51 @@ IP publique /32
 | tp-10-sg-prive      |
 +---------------------+
 ```
+
+# Module EC2
+
+## Objectif
+
+Le module `ec2` déploie les deux instances nécessaires à l'architecture :
+
+- `tp-10-bastion`
+- `tp-10-app`
+
+Le bastion est placé dans le sous-réseau public et possède une adresse IPv4 publique.
+
+L'instance applicative est placée dans le sous-réseau privé et ne possède aucune adresse IPv4 publique.
+
+L'accès à l'instance privée se fait donc obligatoirement en passant par le bastion.
+
+---
+
+## Architecture
+
+```text
+Poste administrateur
+        |
+        | SSH TCP/22
+        v
++-----------------------+
+| tp-10-bastion         |
+| Subnet public         |
+| IPv4 publique         |
+| SG : tp-10-sg-bastion |
++-----------------------+
+        |
+        | SSH TCP/22
+        v
++-----------------------+
+| tp-10-app             |
+| Subnet privé          |
+| Pas d'IPv4 publique   |
+| SG : tp-10-sg-prive   |
++-----------------------+
+        |
+        | Trafic sortant
+        v
+    NAT Gateway
+        |
+        v
+     Internet
+```

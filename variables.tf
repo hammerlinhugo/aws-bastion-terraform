@@ -32,3 +32,14 @@ variable "my_ip_cidr" {
   description = "Adresse IP publique du poste autorisé en SSH"
   type        = string
 }
+
+variable "public_key_path" {
+  description = "Chemin vers cle SSH publique"
+}
+
+variable "instance_type" {
+  description = "Type des instances"
+  type        = string
+  default     = "t3.micro"
+
+}
