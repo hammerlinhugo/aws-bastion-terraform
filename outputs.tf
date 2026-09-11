@@ -17,3 +17,13 @@ output "nat_public_ip" {
   description = "Adresse IP publique de la NAT"
   value       = module.vpc.nat_public_ip
 }
+
+output "bastion_security_group_id" {
+  description = "Security Group du Bastion"
+  value = module.security.bastion_security_group_id
+}
+
+output "private_security_group_id" {
+  description = "Security Group du Bastion"
+  value = module.security.bastion_security_group_id
+}

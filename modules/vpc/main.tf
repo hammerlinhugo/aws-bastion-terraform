@@ -1,7 +1,7 @@
 resource "aws_vpc" "main" {
-  cidr_block  = var.vpc_cidr
-  enable_dns_support  = true
-  enable_dns_hostnames  = true
+  cidr_block           = var.vpc_cidr
+  enable_dns_support   = true
+  enable_dns_hostnames = true
 
   tags = {
     Name = "${var.prefix}-vpc"
@@ -9,9 +9,9 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_subnet" "public" {
-  vpc_id = aws_vpc.main.id
-  cidr_block = var.public_subnet_cidr
-  availability_zone = var.availability_zone
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_subnet_cidr
+  availability_zone       = var.availability_zone
   map_public_ip_on_launch = true
 
   tags = {
@@ -20,9 +20,9 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-  vpc_id = aws_vpc.main.id
-  cidr_block = var.private_subnet_cidr
-  availability_zone = var.availability_zone
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.private_subnet_cidr
+  availability_zone       = var.availability_zone
   map_public_ip_on_launch = false
 
   tags = {
@@ -34,7 +34,7 @@ resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "{var.prefix}-igw"
+    Name = "${var.prefix}-igw"
   }
 }
 
@@ -42,18 +42,18 @@ resource "aws_eip" "nat" {
   domain = "vpc"
 
   tags = {
-    Name = "{var.prefix}-eip"
+    Name = "${var.prefix}-eip"
   }
 }
 
 resource "aws_nat_gateway" "main" {
   allocation_id = aws_eip.nat.id
-  subnet_id = aws_subnet.public.id
+  subnet_id     = aws_subnet.public.id
 
-  depends_on = [ aws_internet_gateway.main ]
+  depends_on = [aws_internet_gateway.main]
 
   tags = {
-    Name = "{var.prefix}-nat"
+    Name = "${var.prefix}-nat"
   }
 }
 
@@ -66,29 +66,29 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "{var.prefix}-rt-public"
+    Name = "${var.prefix}-rt-public"
   }
 }
 
 resource "aws_route_table_association" "public" {
-  subnet_id = aws_subnet.public.id
-  route_table_id = aws_route_table.public.id  
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.public.id
 }
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.main.id
   }
 
   tags = {
-    Name = "{var.prefix}-rt-prive"
+    Name = "${var.prefix}-rt-prive"
   }
 }
 
 resource "aws_route_table_association" "private" {
-  subnet_id = aws_subnet.private.id
-  route_table_id = aws_route_table.private.id  
+  subnet_id      = aws_subnet.private.id
+  route_table_id = aws_route_table.private.id
 }

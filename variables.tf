@@ -27,3 +27,8 @@ variable "availability_zone" {
   description = "Zone de disponibilite utilisee"
   type        = string
 }
+
+variable "my_ip_cidr" {
+  description = "Adresse IP publique du poste autorisé en SSH"
+  type        = string
+}
