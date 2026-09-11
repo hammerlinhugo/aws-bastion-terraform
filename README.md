@@ -119,7 +119,7 @@ IP publique /32
 
 Les captures et preuves de validation du déploiement sont disponibles dans :
 
-[Voir les preuves du module VPC](./docs/security/preuves.md)
+[Voir les preuves du module Security](./docs/security/preuves.md)
 
 # Module EC2
 
@@ -170,5 +170,5 @@ Poste administrateur
 
 Les captures et preuves de validation du déploiement sont disponibles dans :
 
-[Voir les preuves du module VPC](./docs/ec2/preuves.md)
+[Voir les preuves du module EC2](./docs/ec2/preuves.md)
 ```
